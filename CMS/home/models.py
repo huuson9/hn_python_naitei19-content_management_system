@@ -1,15 +1,14 @@
 from django.db import models
 from django.db.models import Avg
+from django.contrib.auth.models import AbstractUser
 
-class User(models.Model):
-    username = models.CharField(max_length=150)
+class User(AbstractUser):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=150)
     email = models.EmailField()
     password = models.CharField(max_length=128)
     is_superuser = models.BooleanField()
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=150)
-    create_at = models.DateTimeField()
-    update_at = models.DateTimeField()
+    date_joined = models.DateTimeField(auto_now_add=True, blank=True)
     num_rate_avg = models.IntegerField()
 
     def __str__(self):
@@ -28,9 +27,16 @@ class Category(models.Model):
         return self.name
 
 class Article(models.Model):
+    STATUS_CHOICES = (
+        ('draft', 'Draft'),
+        ('review', 'Review'),
+        ('published', 'Published'),
+        ('archived', 'Archived'),
+    )
     title = models.CharField(max_length=200)
     content = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=models.DateTimeField(auto_now_add=True))
     updated_at = models.DateTimeField(default=models.DateTimeField(auto_now=True))
