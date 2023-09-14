@@ -6,7 +6,7 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=150)
     email = models.EmailField()
-    num_rate_avg = models.IntegerField()
+    num_rate_avg = models.IntegerField(default=0)
 
     
     def __str__(self):
