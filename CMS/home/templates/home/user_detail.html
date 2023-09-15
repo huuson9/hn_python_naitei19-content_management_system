@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div class="testbox">
+      <form action="/">
+        <h1>{% translate "User Information" %}</h1>
+            <div class="item">
+            <p>{% translate "Your name" %}</p>
+            <div>
+                <input value="{{ user.first_name }} {{ user.last_name }}" />
+            </div>
+            </div>
+            <div class="item">
+                <p>Email</p>
+                <input value= "{{ user.email }}" readonly />
+            </div>
+            <div class="item">
+                <p>{% translate "Username" %}</p>
+                <input value="{{ user.username}}" readonly />
+            </div>
+            <div class="item">
+                <p>{% translate "Password" %}</p>
+                <input value="{{ user.password}}" readonly />
+            <div class="btn-block">
+                <a href="{% url 'userUpdate' user.id %}">Edit</a>
+                <a href="/">Back</a>
+            </div>
+      </form>
+    </div>
+{% endblock %}
+
