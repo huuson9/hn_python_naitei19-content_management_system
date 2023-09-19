@@ -5,6 +5,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from . models import User
 from . forms import UserForm
 
+def index(request):
+    return render(request, 'index.html')
+
 def showUserDetail(request, pk):
     user = get_object_or_404(User, id=pk)
     context = {'user': user}
