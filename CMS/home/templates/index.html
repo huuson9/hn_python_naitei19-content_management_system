@@ -9,7 +9,7 @@
       <div class="col-3">
         <div class="blog-post">
           <div class="image-zoom">
-            <a href="" class="blog-img-url">
+            <a href="{% url 'article' article_item.id %}" class="blog-img-url">
               <img
                 class="blog-img"
                 src="{{ article_item.image.url }}"
@@ -23,11 +23,11 @@
               href="{% url 'user' user.id %}"
               class="blog-link blog-author-name"
             >
-              {{article_item.author}}
+              {{ article_item.author.get_full_name}}
             </a>
           </div>
           <div class="blog-info">
-            <span class="blog-category">in {{article_item.category}}</span>
+            <span class="blog-category">{{article_item.category}}</span>
             <span class="blog-date">{{article_item.created_at}}</span>
           </div>
           <div class="blog-content">
@@ -39,7 +39,9 @@
             <p class="blog-description">{{article_item.subtitle}}</p>
           </div>
           <div class="blog-read-more">
-            <a href="" class="read-more-link">{% trans 'Read more'%}</a>
+            <a href="{% url 'article' article_item.id %}" class="read-more-link"
+              >{% trans 'Read more'%}</a
+            >
           </div>
         </div>
       </div>

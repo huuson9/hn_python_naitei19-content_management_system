@@ -7,3 +7,4 @@ urlpatterns = [
     path('userUpdate/<int:pk>/', views.updateUser, name='userUpdate'),
     path('article/<int:pk>/', views.articleDetail, name='article'),
 ]
+

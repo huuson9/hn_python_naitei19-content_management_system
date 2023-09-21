@@ -1,6 +1,6 @@
 from django import forms
 
-from . models import User
+from . models import User, Comment
 
 class UserForm(forms.ModelForm):
     class Meta:
@@ -13,3 +13,16 @@ class UserForm(forms.ModelForm):
             'username': forms.TextInput(attrs={'class': 'form-control'}),
             'password': forms.PasswordInput(attrs={'class': 'form-control'}),
         }
+
+class CommentForm(forms.ModelForm):
+    
+    class Meta:
+        model = Comment
+        fields = ['text']
+        labels = {
+            'text': ''
+        }
+        widgets = {
+            'text': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Write your comment here', 'id': 'comment_text'}),
+        }
+        

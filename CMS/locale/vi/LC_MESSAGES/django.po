@@ -79,3 +79,19 @@ msgstr "Tác giả: "
 #: .\home\templates\index.html:40
 msgid "Read more"
 msgstr "Đọc thêm"
+
+#: .\home\templates\article\article_detail.html:26
+msgid "Comments"
+msgstr "Bình luận"
+
+#: .\home\templates\article\article_detail.html:28
+msgid "Leave a comment"
+msgstr "Để lại bình luận"
+
+#: .\home\templates\article\article_detail.html:32
+msgid "Post"
+msgstr "Đăng"
+
+#: .\home\templates\article\article_detail.html:44
+msgid "No comments yet."
+msgstr "Chưa có bình luận nào hiện tại."
