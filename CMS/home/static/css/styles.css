@@ -1,164 +1,275 @@
 body {
-    padding: 20px;
-    font-family: 'Comfortaa', cursive;
+  padding: 20px;
+  font-family: "Comfortaa", cursive;
 }
 
 .navbar-container {
-    display: flex;
-    flex-direction: row;
-    background-color: #C51605 ;
-    border-radius: 15px;
-    margin-bottom: 50px;
-    justify-content: space-between;
-    padding: 10px 20px 10px 0px;
+  display: flex;
+  flex-direction: row;
+  background-color: #c51605;
+  border-radius: 15px;
+  margin-bottom: 50px;
+  justify-content: space-between;
+  padding: 10px 20px 10px 0px;
 }
 
-.content-select li{
-    list-style: none;
-    display: inline;
-    margin-left: 20px;
-    padding-left: 20px;
-    border-left: 2px solid white;
+.content-select li {
+  list-style: none;
+  display: inline;
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 2px solid white;
 }
 
 .content-select li a {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 
-
-.user-select li{
-    list-style: none;
-    display: inline;
-    margin-left: 20px;
-    border: 1px solid white;
-    padding: 5px 10px 5px 10px;
-    border-radius: 10px;
+.user-select li {
+  list-style: none;
+  display: inline;
+  margin-left: 20px;
+  border: 1px solid white;
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
 }
 
+.fa-house {
+  color: #fff;
+}
 .user-select li a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
 }
 
 .login-form {
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 500px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
 }
 
 .login-form-container {
-    background-color: #FD8D14;
-    padding: 20px 50px 50px 50px;
-    border-radius: 15px;
-    width: 400px;
+  background-color: #fd8d14;
+  padding: 20px 50px 50px 50px;
+  border-radius: 15px;
+  width: 400px;
 }
 
 .form-input {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .login-button {
-    margin-top: 20px;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    border: none;
-    background-color: #CECE5A;
-    color: white;
-    font-family: 'Comfortaa', cursive;
-    font-size: 20px;
-    width: 200px;
-    align-self: center;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
+  margin-top: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: #cece5a;
+  color: white;
+  font-family: "Comfortaa", cursive;
+  font-size: 20px;
+  width: 200px;
+  align-self: center;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .login-button:hover {
-    margin-top: 20px;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    border: none;
-    background-color: #C51605;
-    color: white;
-    font-family: 'Comfortaa', cursive;
-    font-size: 20px;
-    width: 200px;
-    align-self: center;
+  margin-top: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: #c51605;
+  color: white;
+  font-family: "Comfortaa", cursive;
+  font-size: 20px;
+  width: 200px;
+  align-self: center;
 }
-
 
 .pass-reset-request {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .pass-reset-request a {
-    color: white;
-    text-decoration: none;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
+  color: white;
+  text-decoration: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
-.pass-reset-request a:hover{
-    color: #C51605;
+.pass-reset-request a:hover {
+  color: #c51605;
 }
 
 .username {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
 }
 .username input {
-    height: 30px;
-    padding: 5px 10px 5px 10px;
-    border-radius: 10px;
-    border: none;
-    font-family: 'Comfortaa', cursive;
-    font-weight: 600;
-    outline: none;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
-    background-color: #c9c7c7; 
+  height: 30px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+  border: none;
+  font-family: "Comfortaa", cursive;
+  font-weight: 600;
+  outline: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  background-color: #c9c7c7;
 }
 .username input:focus {
-    font-family: 'Comfortaa', cursive;
-    font-weight: 600;
-    background-color: white;
+  font-family: "Comfortaa", cursive;
+  font-weight: 600;
+  background-color: white;
 }
 .username label {
-    margin-bottom: 10px;
-    font-size: 18px;
+  margin-bottom: 10px;
+  font-size: 18px;
 }
 
 .pass {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
 }
 .pass input {
-    height: 30px;
-    padding: 5px 10px 5px 10px;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
-    background-color: #c9c7c7; 
+  height: 30px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  background-color: #c9c7c7;
 }
-
-.pass input:focus{
-    background-color: white;
+.fa-ranking-star {
+  color: #fff;
+}
+.pass input:focus {
+  background-color: white;
 }
 
 .pass label {
-    margin-bottom: 10px;
-    font-size: 18px;
+  margin-bottom: 10px;
+  font-size: 18px;
 }
 
+.blog-widely-read-btn {
+  width: 212px;
+  background-color: #ebc509;
+  border-radius: 10px;
+  border: none;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 30px;
+  box-shadow: 5px 10px #888888;
+}
+.blog-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 0px 20px;
+  width: 80%;
+}
+
+/* CSS cho phần blog-card */
+
+.blog-post {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.image-zoom {
+  width: 100%;
+}
+.blog-img-url {
+  display: block;
+  height: auto;
+  border-radius: 5px;
+}
+
+.blog-img {
+  max-width: 100%;
+  height: 315px;
+  display: block;
+  border-radius: 5px;
+}
+.blog-info {
+  margin-top: 32px;
+  text-transform: uppercase;
+}
+
+.blog-author-name {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.blog-author {
+  margin-top: 32px;
+}
+.blog-author:hover .blog-author-name {
+  text-decoration: underline;
+}
+.blog-date {
+  font-size: 14px;
+  color: #999;
+}
+
+.blog-content {
+  margin-top: 32px;
+}
+.blog-link {
+  font-size: 18px;
+  color: #333;
+  text-decoration: none;
+}
+
+.blog-link:hover {
+  text-decoration: underline;
+}
+
+.blog-description {
+  height: 40px;
+}
+.blog-read-more {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 14px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  border-radius: 24px;
+  border: 2px solid #000;
+  color: #000;
+}
+
+.blog-read-more > a {
+  text-decoration: none;
+  color: #000;
+}
+
+.blog-read-more:hover {
+  background-color: #000;
+}
+
+.blog-read-more:hover > a {
+  color: #fff;
+}

@@ -32,7 +32,9 @@ class Article(models.Model):
         (3, 'Archived'),
     )
     title = models.CharField(max_length=200)
+    subtitle = models.CharField(max_length= 200, default='')
     content = models.TextField()
+    image = models.ImageField(upload_to='images/', default='download.jpg' )
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     status = models.PositiveSmallIntegerField(choices=STATUS_CHOICES, default=0)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)

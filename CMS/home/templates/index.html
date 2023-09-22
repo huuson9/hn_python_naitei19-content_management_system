@@ -1,4 +1,50 @@
 {% extends "base_generic.html" %}
 {% block content %}
-    <h1>Main Page Here </h1>
+{% load i18n %}
+<div class="container">
+  <div class="blog-widely-read">
+    <button class="blog-widely-read-btn">{% trans 'Widely Read'%}</button>
+    <div class="blog-row">
+      {% for article_item in article %}
+      <div class="col-3">
+        <div class="blog-post">
+          <div class="image-zoom">
+            <a href="" class="blog-img-url">
+              <img
+                class="blog-img"
+                src="{{ article_item.image.url }}"
+                alt="Image Alt Text"
+              />
+            </a>
+          </div>
+          <div class="blog-author">
+            <span>{% trans 'Author: '%} </span>
+            <a
+              href="{% url 'user' user.id %}"
+              class="blog-link blog-author-name"
+            >
+              {{article_item.author}}
+            </a>
+          </div>
+          <div class="blog-info">
+            <span class="blog-category">in {{article_item.category}}</span>
+            <span class="blog-date">{{article_item.created_at}}</span>
+          </div>
+          <div class="blog-content">
+            <h3 class="blog-title">
+              <a href="{% url 'article' article_item.id %}" class="blog-link"
+                >{{article_item.title}}</a
+              >
+            </h3>
+            <p class="blog-description">{{article_item.subtitle}}</p>
+          </div>
+          <div class="blog-read-more">
+            <a href="" class="read-more-link">{% trans 'Read more'%}</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
 {% endblock %}

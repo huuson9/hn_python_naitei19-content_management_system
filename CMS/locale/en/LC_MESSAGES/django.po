@@ -67,3 +67,15 @@ msgstr "Sign In"
 #: .\home\templates\registration\login.html:36
 msgid "Lost password?"
 msgstr "Lost password?"
+
+#: .\home\templates\index.html:4
+msgid "Widely Read"
+msgstr "Widely Read"
+
+#: .\home\templates\index.html:19
+msgid "Author: "
+msgstr "Author: "
+
+#: .\home\templates\index.html:40
+msgid "Read more"
+msgstr "Read more"

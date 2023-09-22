@@ -67,3 +67,15 @@ msgstr "Đăng Nhập"
 #: .\home\templates\registration\login.html:36
 msgid "Lost password?"
 msgstr "Quên mật khẩu ?"
+
+#: .\home\templates\index.html:4
+msgid "Widely Read"
+msgstr "Đọc nhiều"
+
+#: .\home\templates\index.html:19
+msgid "Author: "
+msgstr "Tác giả: "
+
+#: .\home\templates\index.html:40
+msgid "Read more"
+msgstr "Đọc thêm"
