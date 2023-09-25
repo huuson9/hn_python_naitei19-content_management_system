@@ -248,6 +248,7 @@ body {
 }
 .blog-read-more {
   margin-top: 20px;
+  margin-bottom: 20px;
   display: inline-block;
   padding: 14px 20px;
   font-size: 16px;
@@ -274,6 +275,23 @@ body {
   color: #fff;
 }
 
+.blog-reaction {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.blog-reaction > a {
+  text-decoration: none;
+  color: #000;
+}
+.blog-comment {
+  cursor: pointer;
+}
+.blog-liked {
+  cursor: pointer;
+}
 /* BLOG DETAIL */
 .blog-wrapper {
   display: flex;

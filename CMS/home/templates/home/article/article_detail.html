@@ -1,11 +1,13 @@
-{% extends "base_generic.html" %} {% load i18n %} {% block content %}
+{% extends "base_generic.html" %} 
+{% load i18n %} 
+{% block content %}
 <main>
   <div class="blog-wrapper">
     <div class="blog-container">
       <div class="blog-detail_infor">
         <span class="blog-detail-author"
           ><a
-            href="{% url 'user' user.id  %}"
+            href="{% url 'user' article.author.id  %}"
             class="blog-link blog-author-name"
           >
             {{ article.author.get_full_name}}

@@ -1,8 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from django.http import HttpResponse
-from django.contrib import messages
-from django.urls import reverse
-from django.http import HttpResponseRedirect
+from django.db.models import Count
 
 # Create your views here.
 
@@ -34,13 +31,13 @@ def updateUser(request, pk):
 
 def articleList(request): 
     article = Article.objects.all().order_by('-created_at')
-    context = {'article': article, }
+    articles_feature = Article.objects.annotate(comment_count=Count('comment')).order_by('-comment_count')[:3]
+    context = {'article': article, 'articles_feature': articles_feature }
     return render(request, 'index.html', context)
 
 def articleDetail(request, pk): 
     article = get_object_or_404(Article, id=pk)
-    comments = Comment.objects.filter(article=article)
-    # context = {'article': article, 'new_comment': new_comment, 'comment_form': comment_form}
+    comments = Comment.objects.filter(article=article).order_by('-created_at')
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -51,7 +48,8 @@ def articleDetail(request, pk):
     else: 
         comment_form = CommentForm()
 
-    return render(request, 'home/article/article_detail.html', {'article': article,
-                                                                'comments': comments,
-                                                                'comment_form': comment_form})
+    return render(request, 'home/article/article_detail.html',{'article': article, 
+                                                               'comments': comments, 
+                                                               'comment_form': comment_form})
+                                                    
 
