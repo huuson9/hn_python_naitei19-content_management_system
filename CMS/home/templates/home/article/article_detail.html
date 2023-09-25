@@ -1,3 +1,50 @@
 {% extends "base_generic.html" %} {% load i18n %} {% block content %}
-<div class="testbox"></div>
+<main>
+  <div class="blog-wrapper">
+    <div class="blog-container">
+      <div class="blog-detail_infor">
+        <span class="blog-detail-author"
+          ><a
+            href="{% url 'user' user.id  %}"
+            class="blog-link blog-author-name"
+          >
+            {{ article.author.get_full_name}}
+          </a></span
+        >
+        <span class="blog-detail-date">{{article.created_at}}</span>
+      </div>
+      <p class="blog-detail-title">{{article.title}}</p>
+      <p class="blog-detail-subtitle">{{article.subtitle}}</p>
+      <img
+        class="blog-detail-img"
+        src="{{ article.image.url }}"
+        alt="Image Alt Text"
+      />
+      <p class="blog-detail-content">{{article.content}}</p>
+    </div>
+    <div class="comment-section">
+      <p class="comment-title">{% trans 'Comments'%}</p>
+      <hr />
+      <h3>{% trans 'Leave a comment'%}</h3>
+      <form method="post" class="comment-box" id="post-form">
+        {{ comment_form.as_p }} {% csrf_token %}
+        <button data-article="{{article.id}}" class="submit-btn" type="submit">
+          {% trans 'Post'%}
+        </button>
+      </form>
+      <div class="comment-list">
+        {% for comment in comments %}
+        <div class="comment-infor">
+          <p class="comment-author">{{ comment.user.get_full_name}}</p>
+          <p class="comment-date">{{ comment.created_at}}</p>
+        </div>
+        <p class="comment-text">{{ comment.text }}</p>
+        <hr />
+        {% empty %}
+        <p>{% trans 'No comments yet.'%}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</main>
 {% endblock %}
