@@ -35,6 +35,9 @@
       <div class="pass-reset-request">
         <a href="{% url 'password_reset' %}">{% trans 'Lost password?'%}</a>
       </div>
+      <div class="pass-reset-request">
+        <p>{% trans "Don't have account ? "%}<a href="{% url 'register' %}">{% trans 'Register'%}</a></p>
+      </div>
     </div>
   </div>
 </div>

@@ -37,3 +37,4 @@ function likePost(articleId, likeCount, like_icon) {
         }
     })
 }
+
