@@ -15,3 +15,4 @@ function getCookie(name) {
 }
 
 export const csrftoken = getCookie('csrftoken');
+

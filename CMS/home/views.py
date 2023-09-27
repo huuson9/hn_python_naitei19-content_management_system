@@ -128,4 +128,3 @@ def sign_up(request):
         else:
             return render(request, 'registration/register.html', {'form': form})
                                                     
-

@@ -26,7 +26,7 @@ class CommentForm(forms.ModelForm):
         widgets = {
             'text': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Write your comment here', 'id': 'comment_text'}),
         }
-        
+
 class RegisterForm(UserCreationForm):
     class Meta:
         model=User

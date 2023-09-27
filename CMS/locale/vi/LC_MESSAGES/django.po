@@ -31,6 +31,7 @@ msgid "Logout"
 msgstr "Đăng Xuất"
 
 #: .\home\templates\base_generic.html:74
+
 #: .\home\templates\registration\login.html:27
 msgid "Login"
 msgstr "Đăng Nhập"
@@ -46,6 +47,7 @@ msgstr "Để lại bình luận"
 #: .\home\templates\home\article\article_detail.html:34
 msgid "Post"
 msgstr "Đăng"
+
 
 #: .\home\templates\home\article\article_detail.html:46
 msgid "No comments yet."
@@ -127,3 +129,4 @@ msgstr "Đã có tài khoản >"
 #: .\home\views.py:74
 msgid "You have singed up successfully."
 msgstr "Bạn đã đăng kí thành công!"
+

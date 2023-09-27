@@ -18,6 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+
 #: .\home\templates\base_generic.html:33
 msgid "Home"
 msgstr "Home"
@@ -31,6 +32,7 @@ msgid "Logout"
 msgstr "Logout"
 
 #: .\home\templates\base_generic.html:74
+
 #: .\home\templates\registration\login.html:27
 msgid "Login"
 msgstr "Login"
@@ -68,22 +70,6 @@ msgstr "Username"
 msgid "Password"
 msgstr "Password"
 
-#: .\home\templates\index.html:5
-msgid "Widely Read"
-msgstr "Widely Read"
-
-#: .\home\templates\index.html:20 .\home\templates\index.html:81
-msgid "Author: "
-msgstr "Author: "
-
-#: .\home\templates\index.html:42 .\home\templates\index.html:103
-msgid "Read more"
-msgstr "Read more"
-
-#: .\home\templates\index.html:66
-msgid "Blog all"
-msgstr "Blog all"
-
 #: .\home\templates\registration\login.html:5
 msgid "Your username and password didn't match. Please try again."
 msgstr "Your username and password didn't match. Please try again."
@@ -100,32 +86,30 @@ msgstr "Sign In"
 msgid "Lost password?"
 msgstr "Lost password?"
 
-#: .\home\templates\registration\login.html:39
-#, fuzzy
-#| msgid "i have already account >"
-msgid "Don't have account ? "
-msgstr "i have already account >"
+#: .\home\templates\index.html:4
+msgid "Widely Read"
+msgstr "Widely Read"
 
-#: .\home\templates\registration\login.html:39
-msgid "Register"
-msgstr "Register"
+#: .\home\templates\index.html:19
+msgid "Author: "
+msgstr "Author: "
 
-#: .\home\templates\registration\password_reset_confirm.html:2
-msgid "Please enter (and confirm) your new password."
-msgstr "Please enter (and confirm) your new password."
+#: .\home\templates\index.html:40
+msgid "Read more"
+msgstr "Read more"
 
-#: .\home\templates\registration\register.html:8
-msgid "Sign Up"
-msgstr "Sign Up"
+#: .\home\templates\article\article_detail.html:26
+msgid "Comments"
+msgstr "Comments"
 
-#: .\home\templates\registration\register.html:23
-msgid "Signup"
-msgstr "Signup"
+#: .\home\templates\article\article_detail.html:28
+msgid "Leave a comment"
+msgstr "Leave a comment"
 
-#: .\home\templates\registration\register.html:25
-msgid "i have already account >"
-msgstr "i have already account >"
+#: .\home\templates\article\article_detail.html:32
+msgid "Post"
+msgstr "Post"
 
-#: .\home\views.py:74
-msgid "You have singed up successfully."
-msgstr "You have singed up successfully."
+#: .\home\templates\article\article_detail.html:44
+msgid "No comments yet."
+msgstr "No comments yet."
