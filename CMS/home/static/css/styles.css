@@ -38,6 +38,24 @@ body {
 .fa-house {
   color: #fff;
 }
+
+.lang-select {
+  background-color: white;
+  border: none !important;
+  border-radius: 0 !important;
+  right: 200px;
+  top: 52px;
+}
+
+.flags {
+  height: 20px;
+}
+
+.username-display {
+  color: white;
+  text-decoration: none;
+}
+
 .user-select li a {
   color: white;
   text-decoration: none;
@@ -164,6 +182,106 @@ body {
   font-size: 18px;
 }
 
+/* style form register */
+.form-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.form-register {
+  display: flex;
+  flex-direction: column;
+  background-color: #FD8D14;
+  padding: 20px 50px 20px 50px;
+  border-radius: 15px;
+  width: 400px;
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+}
+.form-register h1 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  color: white;
+  margin-bottom: 10px;
+}
+.form-register input {
+  height: 30px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 10px;
+  border: none;
+  font-family: 'Comfortaa', cursive;
+  font-weight: 600;
+  outline: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  background-color: #c9c7c7; 
+  margin-bottom: 15px;
+}
+
+.form-register input:focus {
+  font-family: 'Comfortaa', cursive;
+  font-weight: 600;
+  background-color: white;
+}
+
+.form-register button {
+  margin-top: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: #CECE5A;
+  color: white;
+  font-family: 'Comfortaa', cursive;
+  font-size: 20px;
+  width: 400px;
+  align-self: center;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.form-register button:hover {
+  margin-top: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: #C51605;
+  color: white;
+  font-family: 'Comfortaa', cursive;
+  font-size: 20px;
+  width: 400px;
+  align-self: center;
+}
+
+.form-register a {
+  color: white;
+  text-decoration: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+.form-register a:hover{
+  color: #C51605;
+}
+
+.errorlist {
+  padding: 0 0 10px 0;
+  margin: 0;
+}
+
+.errorlist li {
+  list-style: none;
+  color: #C51605;
+  font-size: 16px;
+}
+
+/* style blog main content */
 .blog-widely-read-btn {
   width: 212px;
   background-color: #ebc509;
@@ -399,3 +517,4 @@ body {
     cursor: pointer;
     color: rgb(201, 56, 56);
  }
+

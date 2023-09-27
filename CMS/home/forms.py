@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 
 from . models import User, Comment
 
@@ -7,11 +8,10 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ['first_name', 'last_name', 'email', 'username']
         context = {
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),  
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'username': forms.TextInput(attrs={'class': 'form-control'}),
-            'password': forms.PasswordInput(attrs={'class': 'form-control'}),
+            'first_name': forms.TextInput(attrs={'class': 'first-name-control'}),
+            'last_name': forms.TextInput(attrs={'class': 'last-name-control'}),  
+            'email': forms.EmailInput(attrs={'class': 'email-control'}),
+            'username': forms.TextInput(attrs={'class': 'username-control'}),
         }
 
 class CommentForm(forms.ModelForm):
@@ -25,4 +25,8 @@ class CommentForm(forms.ModelForm):
         widgets = {
             'text': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Write your comment here', 'id': 'comment_text'}),
         }
-        
+
+class RegisterForm(UserCreationForm):
+    class Meta:
+        model=User
+        fields = ['username','email','password1','password2'] 

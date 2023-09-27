@@ -49,6 +49,9 @@ class Article(models.Model):
 
     def count_comments(self):
         return Comment.objects.filter(article=self).count()
+    
+    def average_rating(self) -> float:
+        return Rating.objects.filter(article=self).aggregate(Avg("rating_value"))['rating_value__avg'] or 0
 
 class Comment(models.Model):
     text = models.CharField(max_length=200)

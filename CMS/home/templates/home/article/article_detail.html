@@ -1,5 +1,6 @@
 {% extends "base_generic.html" %} 
-{% load i18n %} 
+{% load i18n %}
+
 {% block content %}
 <main>
   <div class="blog-wrapper">
@@ -24,6 +25,33 @@
       />
       <p class="blog-detail-content">{{article.content}}</p>
     </div>
+
+    <div class="blog-rating">
+        {% if article.author.id == user.id %}
+            <h5 class="card-title">Avg rating:
+                <span class="fa fa-star {% if article.average_rating > 0 %} checked {% endif %}"></span>
+                <span class="fa fa-star {% if article.average_rating > 1 %} checked {% endif %}"></span>
+                <span class="fa fa-star {% if article.average_rating > 2 %} checked {% endif %}"></span>
+                <span class="fa fa-star {% if article.average_rating > 3 %} checked {% endif %}"></span>
+                <span class="fa fa-star {% if article.average_rating > 4 %} checked {% endif %}"></span>
+            </h5>
+        {% else %}
+            <ul class="btn btn-light list-inline rating-list">
+                <li class="star" data-rating="5" data-article-id="{{ article.id }}">
+                    <i class="star-btn fa fa-star {% if article.user_rating > 4 %} checked {% endif %}" title="Rate 5"></i></li>
+                <li class="star" data-rating="4" data-article-id="{{ article.id }}">
+                    <i class="star-btn star-btn fa fa-star {% if article.user_rating > 3 %} checked {% endif %}" title="Rate 4"></i></li>
+                <li class="star" data-rating="3" data-article-id="{{ article.id }}">
+                    <i class="star-btn fa fa-star {% if article.user_rating > 2 %} checked {% endif %}" title="Rate 3"></i></li>
+                <li class="star" data-rating="2" data-article-id="{{ article.id }}">
+                    <i class="star-btn fa fa-star {% if article.user_rating > 1 %} checked {% endif %}" title="Rate 2"></i></li>
+                <li class="star" data-rating="1" data-article-id="{{ article.id }}">
+                    <i class="star-btn fa fa-star {% if article.user_rating > 0 %} checked {% endif %}" title="Rate 1"></i></li>
+                <li>Your rating:</li>
+            </ul>
+        {% endif %}
+    </div>
+
     <div class="comment-section">
       <p class="comment-title">{% trans 'Comments'%}</p>
       <hr />
@@ -48,5 +76,7 @@
       </div>
     </div>
   </div>
+  {% load static %}
+  <script type="module" src="{% static 'js/stars.js' %}"></script>
 </main>
 {% endblock %}

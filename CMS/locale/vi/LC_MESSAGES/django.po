@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-20 10:36+0700\n"
+"POT-Creation-Date: 2023-09-27 14:48+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,39 +18,73 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: .\home\templates\base_generic.html:26
+#: .\home\templates\base_generic.html:33
 msgid "Home"
 msgstr "Trang Chủ"
 
-#: .\home\templates\base_generic.html:30
+#: .\home\templates\base_generic.html:37
 msgid "Ranking"
 msgstr "BXH"
 
-#: .\home\templates\base_generic.html:39
+#: .\home\templates\base_generic.html:68
 msgid "Logout"
 msgstr "Đăng Xuất"
 
-#: .\home\templates\base_generic.html:42
+#: .\home\templates\base_generic.html:74
+
 #: .\home\templates\registration\login.html:27
 msgid "Login"
 msgstr "Đăng Nhập"
 
-#: .\home\templates\home\user_detail.html:7
-#: .\home\templates\home\user_update.html:8
+#: .\home\templates\home\article\article_detail.html:28
+msgid "Comments"
+msgstr "Bình luận"
+
+#: .\home\templates\home\article\article_detail.html:30
+msgid "Leave a comment"
+msgstr "Để lại bình luận"
+
+#: .\home\templates\home\article\article_detail.html:34
+msgid "Post"
+msgstr "Đăng"
+
+
+#: .\home\templates\home\article\article_detail.html:46
+msgid "No comments yet."
+msgstr "Chưa có bình luận nào hiện tại."
+
+#: .\home\templates\home\user\user_detail.html:7
+#: .\home\templates\home\user\user_update.html:8
 msgid "User Information"
 msgstr "Thông tin người dùng"
 
-#: .\home\templates\home\user_detail.html:9
+#: .\home\templates\home\user\user_detail.html:9
 msgid "Your name"
 msgstr "Tên"
 
-#: .\home\templates\home\user_detail.html:19
+#: .\home\templates\home\user\user_detail.html:19
 msgid "Username"
 msgstr "Tên tài khoản"
 
-#: .\home\templates\home\user_detail.html:23
+#: .\home\templates\home\user\user_detail.html:23
 msgid "Password"
 msgstr "Mật khẩu"
+
+#: .\home\templates\index.html:5
+msgid "Widely Read"
+msgstr "Đọc nhiều"
+
+#: .\home\templates\index.html:20 .\home\templates\index.html:81
+msgid "Author: "
+msgstr "Tác giả: "
+
+#: .\home\templates\index.html:42 .\home\templates\index.html:103
+msgid "Read more"
+msgstr "Đọc thêm"
+
+#: .\home\templates\index.html:66
+msgid "Blog all"
+msgstr "Tất cả bài viết"
 
 #: .\home\templates\registration\login.html:5
 msgid "Your username and password didn't match. Please try again."
@@ -68,30 +102,31 @@ msgstr "Đăng Nhập"
 msgid "Lost password?"
 msgstr "Quên mật khẩu ?"
 
-#: .\home\templates\index.html:4
-msgid "Widely Read"
-msgstr "Đọc nhiều"
+#: .\home\templates\registration\login.html:39
+msgid "Don't have account ? "
+msgstr "Đã có tài khoản >"
 
-#: .\home\templates\index.html:19
-msgid "Author: "
-msgstr "Tác giả: "
+#: .\home\templates\registration\login.html:39
+msgid "Register"
+msgstr "Đăng kí"
 
-#: .\home\templates\index.html:40
-msgid "Read more"
-msgstr "Đọc thêm"
+#: .\home\templates\registration\password_reset_confirm.html:2
+msgid "Please enter (and confirm) your new password."
+msgstr "Hãy nhập (xác nhận) mật khẩu mới của bạn."
 
-#: .\home\templates\article\article_detail.html:26
-msgid "Comments"
-msgstr "Bình luận"
+#: .\home\templates\registration\register.html:8
+msgid "Sign Up"
+msgstr "Đăng Kí"
 
-#: .\home\templates\article\article_detail.html:28
-msgid "Leave a comment"
-msgstr "Để lại bình luận"
+#: .\home\templates\registration\register.html:23
+msgid "Signup"
+msgstr "Đăng kí"
 
-#: .\home\templates\article\article_detail.html:32
-msgid "Post"
-msgstr "Đăng"
+#: .\home\templates\registration\register.html:25
+msgid "i have already account >"
+msgstr "Đã có tài khoản >"
 
-#: .\home\templates\article\article_detail.html:44
-msgid "No comments yet."
-msgstr "Chưa có bình luận nào hiện tại."
+#: .\home\views.py:74
+msgid "You have singed up successfully."
+msgstr "Bạn đã đăng kí thành công!"
+

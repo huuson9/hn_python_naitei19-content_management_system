@@ -3,14 +3,14 @@ import { csrftoken } from "./csrf_token.js";
 const articles = document.querySelectorAll('.articles');
             
 articles.forEach(article => {
-    const likeButtons = article.querySelector(".like-button");
+    const likeButton = article.querySelector(".like-button");
     const likeCount = article.querySelector('.like-count');
     
-    likeButtons.addEventListener("click", () => {
+    likeButton.addEventListener("click", () => {
         const articleId = article.getAttribute("data-article-id");
         let like_icon = article.querySelector('.liked');
+
         likePost(articleId, likeCount, like_icon);
-        console.log(like_icon);
     });
 });
 
@@ -20,8 +20,8 @@ function likePost(articleId, likeCount, like_icon) {
     fetch(url, {
         method: "POST",
         headers: {
-        "X-CSRFToken": csrftoken,
-        "Content-Type": "application/json",
+            "X-CSRFToken": csrftoken,
+            "Content-Type": "application/json",
         },
     })
     .then((response) => response.json())
@@ -37,3 +37,4 @@ function likePost(articleId, likeCount, like_icon) {
         }
     })
 }
+
