@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect, JsonResponse
 from django.db.models import Count
+from django.urls import reverse
 from django.utils.translation import gettext as _
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -11,17 +12,6 @@ from .forms import RegisterForm
 
 from . models import Rating, User, Article, Like, Comment
 from . forms import UserForm, CommentForm
-
-#Home page
-def home(request):
-    articles = Article.objects.all().order_by("id")
-    for article in articles:
-        rating = Rating.objects.filter(user=request.user.id, article=article).first()
-        article.user_rating = rating.rating_value if rating else 0
-
-    context = {'articles': articles}
-
-    return render(request, 'home.html', context)
 
 #Customize user information
 def showUserDetail(request, pk):
@@ -53,7 +43,7 @@ def articleList(request):
 
     for article in articles:
         article.like = False
-        
+
         if Like.objects.filter(user=user, article=article).exists():
             article.like = True
 
@@ -73,6 +63,9 @@ def articleList(request):
 def articleDetail(request, pk): 
     article = get_object_or_404(Article, id=pk)
     comments = Comment.objects.filter(article=article).order_by('-created_at')
+    rating = Rating.objects.filter(user=request.user.id, article=article).first()
+    article.user_rating = rating.rating_value if rating else 0
+
     if request.method == 'POST':
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -85,7 +78,9 @@ def articleDetail(request, pk):
 
     return render(request, 'home/article/article_detail.html', {'article': article,
                                                                 'comments': comments,
-                                                                'comment_form': comment_form})
+                                                                'comment_form': comment_form,
+                                                                'num_of_stars': range(1, 6),
+                                                                'avg_rate': range(5)})
 
 
 #Like and rate article
@@ -110,6 +105,15 @@ def likeArticle(request, pk):
 
     return JsonResponse(context, safe=False)
 
+def rateArticle(request, post_id: int, rating: int):
+    article = Article.objects.get(id=post_id)
+    user = User.objects.get(id=request.user.id)
+    
+    Rating.objects.filter(user=user, article=article).delete()
+    Rating.objects.create(user=user, article=article, rating_value=rating)
+
+    return articleDetail(request, post_id)
+
 def sign_up(request):
     if request.method == 'GET':
         form = RegisterForm()
@@ -128,3 +132,4 @@ def sign_up(request):
         else:
             return render(request, 'registration/register.html', {'form': form})
                                                     
+

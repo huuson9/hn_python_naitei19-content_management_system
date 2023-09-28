@@ -1,7 +1,9 @@
 {% extends "base_generic.html" %} 
-{% load i18n %} 
+{% load i18n %}
+
 {% block content %}
 <main>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <div class="blog-wrapper">
     <div class="blog-container">
       <div class="blog-detail_infor">
@@ -24,6 +26,26 @@
       />
       <p class="blog-detail-content">{{article.content}}</p>
     </div>
+
+    <div class="blog-rating">
+       {% if article.author.id == user.id %}
+            <h5 class="card-title">Avg rating:
+                {% for i in avg_rate %}
+                    <span class="fa fa-star {% if article.average_rating > i %} checked {% endif %}"></span>
+                {% endfor %}      
+            </h5>
+        {% else %}
+            <ul class="btn btn-light list-inline rating-list" id="ratingList">
+                {% for i in num_of_stars reversed %}
+                    <li class="star" data-rating="{{ i }}" data-article-id="{{ article.id }}">
+                        <i class="fa fa-star {% if article.user_rating >= i %} checked {% endif %}" title="Rate {{ i }}"></i>
+                    </li>
+                {% endfor %}
+                <li>Your rating:</li>
+            </ul>
+        {% endif %}
+    </div>
+
     <div class="comment-section">
       <p class="comment-title">{% trans 'Comments'%}</p>
       <hr />
@@ -48,5 +70,7 @@
       </div>
     </div>
   </div>
+  {% load static %}
+  <script type="module" src="{% static 'js/stars.js' %}"></script>
 </main>
 {% endblock %}
