@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect, JsonResponse
 from django.db.models import Count
+from django.urls import reverse
 from django.utils.translation import gettext as _
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -77,7 +78,9 @@ def articleDetail(request, pk):
 
     return render(request, 'home/article/article_detail.html', {'article': article,
                                                                 'comments': comments,
-                                                                'comment_form': comment_form})
+                                                                'comment_form': comment_form,
+                                                                'num_of_stars': range(1, 6),
+                                                                'avg_rate': range(5)})
 
 
 #Like and rate article
@@ -102,6 +105,15 @@ def likeArticle(request, pk):
 
     return JsonResponse(context, safe=False)
 
+def rateArticle(request, post_id: int, rating: int):
+    article = Article.objects.get(id=post_id)
+    user = User.objects.get(id=request.user.id)
+    
+    Rating.objects.filter(user=user, article=article).delete()
+    Rating.objects.create(user=user, article=article, rating_value=rating)
+
+    return articleDetail(request, post_id)
+
 def sign_up(request):
     if request.method == 'GET':
         form = RegisterForm()
@@ -121,10 +133,3 @@ def sign_up(request):
             return render(request, 'registration/register.html', {'form': form})
                                                     
 
-def rateArticle(request, post_id: int, rating: int):
-    article = Article.objects.get(id=post_id)
-    user = get_object_or_404(User, id=request.user.id)
-    Rating.objects.filter(user=user, article=article).delete()
-    Rating.objects.create(user=user, article=article, rating_value=rating)
-
-    return articleDetail(request, post_id)

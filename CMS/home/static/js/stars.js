@@ -1,30 +1,25 @@
-// script.js
+$(document).ready(function () {
+  $('.star').on('click', function () {
+    var rating = parseInt($(this).data('rating'));
+    var articleId = $(this).data('article-id');
 
-const stars = document.querySelectorAll('.star');
+    rate(rating, articleId);
+  });
 
-stars.forEach(star => {
-    star.addEventListener('click', () => {
-        const rating = parseInt(star.getAttribute('data-rating'));
-        const articleId = star.getAttribute('data-article-id');
-        
-        rate(rating, articleId);
-    });
-});
-
-
-function rate(rating, post_id) {
-    const substr = "article/" + post_id + "/";
-    const url = window.location.href.replace(substr, 'rate/') + post_id + "/" + rating + "/";
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(response => {
+  function rate(rating, post_id) {
+    var substr = "article/" + post_id + "/";
+    var url = window.location.href.replace(substr, 'rate/') + post_id + "/" + rating + "/";
+    
+    $.ajax({
+      url: url,
+      type: 'GET',
+      contentType: 'application/json',
+      success: function () {
         window.location.reload();
+      },
+      error: function () {
+        window.location.href = '/accounts/login/?next=/home/article/' + post_id + '/';
+      }
     });
-}
-  
-
-  
+  }
+});
