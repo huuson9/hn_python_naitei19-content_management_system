@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from django.http import HttpRequest, HttpResponse, HttpResponseRedirect, JsonResponse
-from django.db.models import Count
+from django.http import HttpResponseRedirect, JsonResponse
+from django.db.models import Count, Q
 from django.urls import reverse
 from django.utils.translation import gettext as _
 from django.contrib.auth import authenticate,login,logout
@@ -132,4 +132,7 @@ def sign_up(request):
         else:
             return render(request, 'registration/register.html', {'form': form})
                                                     
-
+def search(request): 
+    query = request.GET.get('author')
+    articles = Article.objects.filter(Q(author__username__icontains=query))  
+    return render(request, 'index.html',{'article': articles, 'query': query} )
