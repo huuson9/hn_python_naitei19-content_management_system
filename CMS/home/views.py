@@ -6,7 +6,8 @@ from django.utils.translation import gettext as _
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import RegisterForm
+from .forms import RegisterForm, ArticleForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -59,6 +60,55 @@ def articleList(request):
     }
 
     return render(request, 'index.html', context)
+
+@login_required
+def ownArticleList(request):
+    articles = Article.objects.filter(author=request.user.id).order_by('-created_at')
+
+    context = {'articles': articles}
+    return render(request, 'home/article/own_articles.html', context)
+
+@login_required
+def newArticle(request):
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES)
+        if form.is_valid():
+            article = form.save(commit=False)
+            article.author = request.user
+            article.save()
+            return HttpResponseRedirect(reverse('own'))
+    else:
+        form = ArticleForm()
+    
+    context = {'form': form}
+
+    return render(request, 'home/article/new_article.html', context)
+
+@login_required
+def updateArticle(request, pk):
+    article = get_object_or_404(Article, id=pk)
+
+    if request.method == 'POST':
+        form = ArticleForm(request.POST, request.FILES, instance=article)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('own'))
+        
+    else:
+        form = ArticleForm(instance=article)
+    
+    context = {'form': form}
+
+    return render(request, 'home/article/new_article.html' , context)
+
+@login_required
+def deleteArticle(request, pk):
+    article = get_object_or_404(Article, id=pk)
+    if article.author == request.user:
+        article.status = 3
+        article.save()
+
+    return HttpResponseRedirect(reverse('own'))
 
 def articleDetail(request, pk): 
     article = get_object_or_404(Article, id=pk)

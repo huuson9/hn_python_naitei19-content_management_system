@@ -16,6 +16,7 @@
     <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
     <link rel="stylesheet" href="{% static 'css/stars.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dropdown.css' %}">
   </head>
   <body>
     <div class="main">
@@ -54,7 +55,10 @@
                   <img class="flags" src="{{ '/static/images/flags/'|add:language.code|add:'.png' }}" alt="flag-img" />
                 </form>
                 {% endfor %}
-              </li>
+            </li>
+            <li>
+                <a href="{% url 'own' %}">Your posts</a>
+            </li>
             {% if user.is_authenticated %}
             <li>
                 <a href="{% url 'user' user.id %}">User: {{ user.get_username }}</a>
