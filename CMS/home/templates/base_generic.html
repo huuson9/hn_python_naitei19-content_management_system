@@ -57,11 +57,11 @@
                 {% endfor %}
             </li>
             <li>
-                <a href="{% url 'own' %}">Your posts</a>
+                <a href="{% url 'own' request.user.id %}">Your posts</a>
             </li>
             {% if user.is_authenticated %}
             <li>
-                <a href="{% url 'user' user.id %}">User: {{ user.get_username }}</a>
+                <a href="{% url 'user' request.user.id %}">User: {{ request.user.get_username }}</a>
             </li>
             <li>
               <a href="{% url 'logout'%}?next={{request.path}}"

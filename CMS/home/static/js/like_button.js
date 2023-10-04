@@ -16,7 +16,10 @@ articles.forEach(article => {
 
 
 function likePost(articleId, likeCount, like_icon) {
-    const url = window.location.href + 'like/' + articleId + '/';
+    var url = window.location.href;
+    var index = url.indexOf("home/");
+    url = url.slice(0, index+5)  + "like/" + articleId + "/";
+
     fetch(url, {
         method: "POST",
         headers: {

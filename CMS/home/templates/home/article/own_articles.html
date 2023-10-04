@@ -4,9 +4,11 @@
 
 {% block content %}
 <div class="container">
+    {% if request.user.id == user.id %}
     <div class="mt-5 text-center">
         <button class="blog-widely-read-btn" onclick="location.href='{% url 'newArticle' %}';" type="button">{% trans 'New article' %}</button>
     </div>
+    {% endif %}
     <div class="blog-all">
         <div class="blog-row">
             {% for article_item in articles %}
@@ -37,7 +39,15 @@
                             </a>
                             
                         </div>
-                        
+                        <div class="blog-author">
+                            <span>{% trans 'Author: '%} </span>
+                            <a
+                              href="{% url 'user' article_item.author.id %}"
+                              class="blog-link blog-author-name"
+                            >
+                              {{ article_item.author.get_full_name}}
+                            </a>
+                          </div>
                         <div class="blog-info">
                             <span class="blog-category">{{article_item.category}}</span>
                             <span class="blog-date">{{article_item.created_at}}</span>
@@ -63,11 +73,16 @@
                             </a>
                             <div class="blog-like">
                                 <span class="like-button" data-article-id="{{ article_item.id }}">
+                                  {% if article_item.like %}
                                     <i class="fa-solid fa-heart liked"></i>
+                                  {% else %}
+                                    <i class="fa-regular fa-heart liked"></i>
+                                  {% endif %}
                                 </span>
                                 <span class="like-count" data-article-id="{{ article_item.id }}">
-                                    {{ article_item.count_likes }}</span>
-                            </div>
+                                  {{ article_item.count_likes}}</span
+                                >
+                              </div>
                         </div>
                     </div>
                 </div>
@@ -76,6 +91,6 @@
         </div>
     </div>
     {% load static %}
+    <script type="module" src="{% static 'js/like_button.js' %}"></script>
 </div>
-
 {% endblock %}
