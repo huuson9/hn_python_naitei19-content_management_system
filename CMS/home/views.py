@@ -63,10 +63,20 @@ def articleList(request):
     return render(request, 'index.html', context)
 
 @login_required
-def ownArticleList(request):
-    articles = Article.objects.filter(author=request.user.id).order_by('-created_at')
+def ownArticleList(request, pk):
+    user = get_object_or_404(User, id=pk)
+    articles = Article.objects.filter(author=user.id).order_by('-created_at')
 
-    context = {'articles': articles}
+    for article in articles:
+        article.like = False
+
+        if Like.objects.filter(user=request.user, article=article).exists():
+            article.like = True
+
+    context = {
+        'articles': articles, 
+        'user': user
+    }
     return render(request, 'home/article/own_articles.html', context)
 
 @login_required
@@ -113,6 +123,13 @@ def deleteArticle(request, pk):
 
 def articleDetail(request, pk): 
     article = get_object_or_404(Article, id=pk)
+    relateds = Article.objects.filter(category=article.category).exclude(id=pk).annotate(like_count=Count('like')).order_by('-like_count')[:3]
+    for related in relateds:
+        related.like = False
+
+        if Like.objects.filter(user=request.user, article=article).exists():
+            article.like = True
+
     comments = Comment.objects.filter(article=article).order_by('-created_at')
     rating = Rating.objects.filter(user=request.user.id, article=article).first()
     article.user_rating = rating.rating_value if rating else 0
@@ -128,6 +145,7 @@ def articleDetail(request, pk):
         comment_form = CommentForm()
 
     return render(request, 'home/article/article_detail.html', {'article': article,
+                                                                'relateds': relateds,
                                                                 'comments': comments,
                                                                 'comment_form': comment_form,
                                                                 'num_of_stars': range(1, 6),

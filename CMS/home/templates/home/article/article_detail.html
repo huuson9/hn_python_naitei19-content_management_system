@@ -70,7 +70,76 @@
       </div>
     </div>
   </div>
+
+  <div class="blog-all">
+    <button class="blog-widely-read-btn">{% trans 'Related blogs'%}</button>
+    <div class="blog-row">
+      {% for related in relateds %}
+      <div class="col-3">
+        <div class="blog-post articles" data-article-id="{{ related.id }}">
+          <div class="image-zoom">
+            <a href="{% url 'article' related.id %}" class="blog-img-url">
+              <img
+                class="blog-img"
+                src="{{ related.image.url }}"
+                alt="Image Alt Text"
+              />
+            </a>
+          </div>
+          <div class="blog-author">
+            <span>{% trans 'Author: '%} </span>
+            <a
+              href="{% url 'user' related.author.id %}"
+              class="blog-link blog-author-name"
+            >
+              {{ related.author.get_full_name}}
+            </a>
+          </div>
+          <div class="blog-info">
+            <span class="blog-category">{{related.category}}</span>
+            <span class="blog-date">{{related.created_at}}</span>
+          </div>
+          <div class="blog-content">
+            <h3 class="blog-title">
+              <a href="{% url 'article' related.id %}" class="blog-link"
+                >{{related.title}}</a
+              >
+            </h3>
+            <p class="blog-description">{{related.subtitle}}</p>
+          </div>
+          <div class="blog-read-more">
+            <a href="{% url 'article' related.id %}" class="read-more-link"
+              >{% trans 'Read more'%}</a
+            >
+          </div>
+          <hr />
+          <div class="blog-reaction">
+            <a href="{% url 'article' related.id %}">
+              <div class="blog-comment">
+                <i class="fa-regular fa-comment"></i>
+                <span>{{related.count_comments}}</span>
+              </div>
+            </a>
+            <div class="blog-like">
+              <span class="like-button" data-article-id="{{ related.id }}">
+                {% if related.like %}
+                    <i class="fa-solid fa-heart liked"></i>
+                {% else %}
+                    <i class="fa-regular fa-heart liked"></i>
+                {% endif %}
+              </span>
+              <span class="like-count" data-article-id="{{ related.id }}">
+                {{ related.count_likes}}</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
   {% load static %}
+  <script type="module" src="{% static 'js/like_button.js' %}"></script>
   <script type="module" src="{% static 'js/stars.js' %}"></script>
 </main>
 {% endblock %}

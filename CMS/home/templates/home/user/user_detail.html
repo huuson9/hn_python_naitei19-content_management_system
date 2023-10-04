@@ -56,10 +56,17 @@
                             <input type="text" class="form-control" value="" placeholder="state" readonly>
                         </div>
                     </div>
-                    <div class="mt-5 text-center">
-                        <div class="btn btn-primary profile-button"
-                            onclick="location.href='{% url 'userUpdate' user.id %}';" type="button">{% translate "Edit profile" %}</div>
-                    </div>
+                    {% if request.user.id == user.id %}
+                        <div class="mt-5 text-center">
+                            <div class="btn btn-primary profile-button"
+                                onclick="location.href='{% url 'userUpdate' user.id %}';" type="button">{% translate "Edit profile" %}</div>
+                        </div>
+                    {% else %}
+                        <div class="mt-5 text-center">
+                            <div class="btn btn-primary profile-button"
+                                onclick="location.href='{% url 'own' user.id %}';" type="button">{% translate "All posts" %}</div>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="col-md-4">
