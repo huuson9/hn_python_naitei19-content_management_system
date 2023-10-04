@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-from . models import Rating, User, Article, Like, Comment
+from . models import Rating, User, Article, Like, Comment, Category
 from . forms import UserForm, CommentForm
 
 #Customize user information
@@ -40,8 +40,9 @@ def updateUser(request, pk):
 def articleList(request): 
     articles = Article.objects.all().order_by('-created_at')
     articles_feature = Article.objects.annotate(comment_count=Count('comment')).order_by('-comment_count')[:3]
+    categories = Category.objects.annotate(num_articles=Count('article')).order_by('-num_articles')
     user = get_object_or_404(User, id=request.user.id)
-
+    
     for article in articles:
         article.like = False
 
@@ -56,9 +57,9 @@ def articleList(request):
             
     context = {
         'article': articles, 
-        'articles_feature': articles_feature,     
+        'articles_feature': articles_feature,
+        'categories': categories,
     }
-
     return render(request, 'index.html', context)
 
 @login_required
@@ -184,5 +185,25 @@ def sign_up(request):
                                                     
 def search(request): 
     query = request.GET.get('author')
+    categories = Category.objects.annotate(num_articles=Count('article')).order_by('-num_articles')
     articles = Article.objects.filter(Q(author__username__icontains=query))  
-    return render(request, 'index.html',{'article': articles, 'query': query} )
+    context = {
+        'article': articles,
+        'categories': categories,
+        'query': query,
+    }
+    return render(request, 'index.html',context)
+
+
+def articlesByCategory(request, category_name):
+    categories = Category.objects.annotate(num_articles=Count('article')).order_by('-num_articles')
+    category = get_object_or_404(Category, name=category_name)
+    articles = Article.objects.filter(category = category)
+    
+    context = {
+        'category': category,
+        'article': articles,
+        'categories': categories,
+    }
+    
+    return render(request, 'index.html', context)
